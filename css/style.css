@@ -1,0 +1,1464 @@
+/* --- CSS Resets & Base Styles --- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif; /* Body font */
+    line-height: 1.6;
+    color: var(--color-text-dark-gold); /* Main text color is dark gold */
+    background-color: var(--color-background-white); /* White background */
+    -webkit-font-smoothing: antialiased; /* Better font rendering */
+    scroll-padding-top: 80px; /* Adjust for fixed header */
+    overflow-x: hidden; /* Prevent horizontal scroll due to animations */
+}
+
+/* Global Variables (New Colors, Fonts) */
+:root {
+    /* Primary brand colors for a white/gold theme */
+    --color-primary-gold: #DAA520; /* Goldenrod - A strong, visible gold */
+    --color-primary-gold-dark: #B8860B; /* DarkGoldenrod - For darker accents/hover */
+    --color-accent-light-gold: #FFD700; /* Gold - Brighter gold for highlights */
+    
+    /* Text Colors */
+    --color-text-dark-gold: #8B7355; /* Darker, readable gold for body text (e.g., Bronze) */
+    --color-text-heading: #6B4226; /* A rich brown for headings to ensure contrast */
+    --color-text-light: #FFFFFF; /* White text for dark backgrounds */
+    
+    /* Background Colors */
+    --color-background-white: #FFFFFF; /* Pure White */
+    --color-background-light-grey: #FDFDFD; /* Very subtle off-white for subtle section breaks */
+    --color-background-gray: #D9D9D9;
+    
+    /* Border & Shadow Colors */
+    --color-border: #EEE; /* Light grey for borders */
+    --shadow-light: 0 4px 15px rgba(0, 0, 0, 0.03);
+    --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+
+    /* Typography */
+    --font-heading: 'Lora', serif; /* Elegant serif for headings */
+    --font-body: 'Inter', sans-serif; /* Modern sans-serif for body */
+
+    /* Spacing & Sizing */
+    --padding-section: 90px 0; /* Standard section padding */
+    --container-max-width: 1200px; /* Max width for content */
+    --border-radius-soft: 8px;
+    --border-radius-pill: 50px;
+    
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-text-heading); /* Headings are a rich brown for contrast */
+    line-height: 1.25;
+    margin-bottom: 0.6em;
+    font-weight: 700;
+}
+
+h1 { font-size: 3.2em; }
+h2 { font-size: 2.5em; }
+h3 { font-size: 2em; }
+h4 { font-size: 1.6em; }
+
+/* Links */
+a {
+    color: var(--color-primary-gold); /* Links are bright gold */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: var(--color-primary-gold-dark); /* Darker gold on hover */
+}
+
+/* Lists */
+ul {
+    list-style: none;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Layout Containers & Utilities --- */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 25px; /* Horizontal padding for responsiveness */
+}
+
+.section-padding {
+    padding: var(--padding-section);
+}
+
+.bg-light {
+    background-color: var(--color-background-light-grey); /* Very subtle light grey */
+}
+
+.bg-white {
+    background-color: var(--color-background-white); /* Pure white */
+}
+
+.bg-primary-gradient {
+    background: linear-gradient(135deg, var(--color-primary-gold) 0%, var(--color-primary-gold-dark) 100%); /* Gold gradient */
+    color: var(--color-text-light); /* White text on gold gradient */
+}
+
+.text-center {
+        margin-top: 5vh;    
+    text-align: center;
+}
+
+.text-white {
+    color: var(--color-text-light) !important; /* Force white for specific sections */
+}
+.text-primary-gold {
+    color: var(--color-primary-gold) !important;
+}
+.text-heading {
+    color: var(--color-text-heading) !important;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.3em; /* UPDATED: Reduced font size */
+    color: var(--color-text-heading); /* Title color is rich brown */
+}
+.section-title.text-white {
+    color: var(--color-text-light) !important;
+}
+
+.section-description {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 50px auto;
+    font-size: 1.15em;
+    color: var(--color-text-dark-gold); /* Description text is dark gold */
+    line-height: 1.7;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 15px 35px;
+    border-radius: var(--border-radius-pill);
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.95em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    letter-spacing: 0.8px;
+    box-shadow: var(--shadow-light);
+}
+
+.btn-primary {
+    background-color: var(--color-primary-gold);
+    color: var(--color-text-light); /* White text on primary gold button */
+    border-color: var(--color-primary-gold);
+}
+.btn-primary:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary); /* <-- This is likely the culprit */
+    border-color: var(--color-primary);
+}
+
+.btn-secondary {
+    background-color: var(--color-background-white); /* White background for secondary button */
+    color: var(--color-primary-gold); /* Gold text on secondary button */
+    border-color: var(--color-primary-gold);
+}
+.btn-secondary:hover {
+    background-color: var(--color-primary-gold);
+    color: var(--color-text-light); /* White text on hover */
+    border-color: var(--color-primary-gold);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary-gold);
+    border-color: var(--color-primary-gold);
+    box-shadow: none;
+}
+.btn-outline:hover {
+    background-color: var(--color-primary-gold);
+    color: var(--color-text-light);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+.btn-lg {
+    padding: 18px 45px;
+    font-size: 1.1em;
+}
+
+/* --- Header --- */
+.main-header {
+    background-color: var(--color-background-white);
+    padding: 15px 0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.logo img {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+}
+
+.main-nav .nav-list {
+    display: flex;
+    gap: 40px;
+}
+
+.main-nav .nav-list li a {
+    color: var(--color-text-dark-gold); /* Nav links are dark gold */
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 8px;
+    font-size: 1.05em;
+    transition: color 0.3s ease;
+}
+
+.main-nav .nav-list li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--color-primary-gold); /* Underline is bright gold */
+    transition: width 0.3s ease;
+}
+
+.main-nav .nav-list li a:hover::after,
+.main-nav .nav-list li a.active::after {
+    width: 100%;
+}
+
+.main-nav .nav-list li a:hover {
+    color: var(--color-primary-gold); /* Text color changes to bright gold on hover */
+}
+
+.hamburger-menu {
+    display: none;
+    font-size: 2.4em;
+    cursor: pointer;
+    color: var(--color-primary-gold); /* Hamburger icon is bright gold */
+}
+
+/* --- Hero Section (Home Page Specific) --- */
+.hero-section {
+    position: relative;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 120px 0;
+    background-color: var(--color-background-white); /* Hero section background is white */
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    /* This background will be subtle on a white theme */
+    background: url('[Placeholder: subtle-white-texture.webp]') center center/cover no-repeat; /* A very subtle white texture or pattern */
+    opacity: 0.7; /* Make it very subtle */
+}
+
+.hero-background img, .hero-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.7; /* Make it very subtle if using direct img/video */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 950px;
+    padding: 20px;
+    color: var(--color-text-heading); /* Hero content headings are rich brown */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Very subtle text shadow */
+}
+
+.hero-content h1 {
+    font-size: 4em;
+    margin-bottom: 30px;
+    line-height: 1.1;
+    color: inherit;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    opacity: 0.95;
+    color: var(--color-text-dark-gold); /* Hero content paragraphs are dark gold */
+}
+
+.hero-ctas {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+/* --- Our Expertise / What We Do Section (Home Page) --- */
+.expertise-section {
+    background-color: var(--color-background-light-grey); /* Subtle light grey background */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 35px;
+    margin-top: 60px;
+}
+
+.service-item {
+    text-align: center;
+    padding: 40px 30px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-soft);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    background-color: var(--color-background-white);
+    box-shadow: var(--shadow-light);
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+    background-color: var(--color-primary-gold); /* Gold background on hover */
+    color: var(--color-text-light); /* White text on hover */
+}
+
+.service-item i {
+    font-size: 4.5em;
+    color: var(--color-primary-gold); /* Icons are bright gold */
+    margin-bottom: 25px;
+    transition: color 0.3s ease;
+}
+
+.service-item:hover i {
+    color: var(--color-text-light); /* White icon on hover */
+}
+
+.service-item h3 {
+    font-size: 1.6em;
+    color: var(--color-text-heading); /* Heading is rich brown */
+}
+.service-item:hover h3 {
+    color: var(--color-text-light); /* White heading on hover */
+}
+
+/* --- Why Choose Us Section (Home Page) --- */
+.why-choose-us-section {
+    background-color: var(--color-background-white); /* Pure white background */
+}
+
+.usp-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+    margin-top: 60px;
+}
+
+.usp-item {
+    background-color: var(--color-background-light-grey); /* Subtle light grey for USP items */
+    padding: 45px 35px;
+    border-radius: var(--border-radius-soft);
+    text-align: center;
+    box-shadow: var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--color-border);
+}
+
+.usp-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-medium);
+}
+
+.usp-item i {
+    font-size: 4em;
+    color: var(--color-primary-gold); /* Icons are bright gold */
+    margin-bottom: 25px;
+    transition: color 0.3s ease;
+}
+.usp-item:hover i {
+    color: var(--color-primary-gold-dark); /* Darker gold on hover */
+}
+
+.usp-item h3 {
+    font-size: 1.7em;
+    margin-bottom: 15px;
+    color: var(--color-text-heading); /* Heading is rich brown */
+}
+
+.usp-item p {
+    font-size: 1.05em;
+    color: var(--color-text-dark-gold); /* Paragraph is dark gold */
+}
+
+/* --- Mini-Gallery Section (Home Page) --- */
+.mini-gallery-section {
+    background-color: var(--color-background-light-grey); /* Subtle light grey background */
+}
+
+.gallery-grid-preview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.gallery-preview-item {
+    border-radius: var(--border-radius-soft);
+    overflow: hidden;
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.gallery-preview-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.gallery-preview-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+/* --- Testimonials Section --- */
+.testimonials-section {
+    /* bg-accent-rose-gradient would be defined in your custom colors */
+    /* Example: background: linear-gradient(135deg, var(--color-accent-rose), var(--color-primary-dark)); */
+}
+
+.testimonials-section .section-title {
+    color: var(--color-white); /* Ensure title is white on this background */
+    margin-bottom: 60px;
+}
+
+.testimonial-slider-container {
+    display: grid;
+    /* On larger screens, show 3 columns. On smaller, adjust to 2 or 1. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px; /* Space between testimonial items */
+    justify-content: center; /* Center items if they don't fill the row */
+}
+
+.testimonial-item {
+    background-color: var(--color-white);
+    padding: 35px;
+    border-radius: var(--border-radius-large); /* More rounded for softer look */
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Use flexbox for internal layout */
+    flex-direction: column;
+    height: 100%; /* Ensure all items in a row have equal height */
+}
+
+.testimonial-item:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-strong);
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.client-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Make it a circle */
+    object-fit: cover;
+    margin-right: 20px;
+    border: 3px solid var(--color-primary); /* Accent border around avatar */
+}
+
+.client-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center content */
+}
+
+.author {
+    font-size: 1.2em;
+    color: var(--color-text-heading);
+    margin-bottom: 5px; /* Adjust spacing */
+    font-weight: 700;
+}
+
+.event-details {
+    font-size: 0.95em;
+    color: var(--color-text-body);
+    margin-bottom: 8px; /* Spacing before stars */
+}
+
+.star-rating {
+    color: var(--color-accent-gold); /* Gold color for stars */
+    font-size: 1.1em;
+}
+
+.star-rating .fas, .star-rating .far {
+    margin-right: 2px; /* Small space between stars */
+}
+
+.quote {
+    font-size: 1.15em;
+    line-height: 1.8;
+    color: var(--color-text-body);
+    font-style: italic; /* Emphasize the quote */
+    flex-grow: 1; /* Allows quote to take up available space */
+}
+
+/* Responsive Adjustments for Testimonials */
+@media (max-width: 991px) {
+    .testimonial-slider-container {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 2 columns on tablets */
+        gap: 25px;
+    }
+}
+
+@media (max-width: 767px) {
+    .testimonials-section .section-title {
+        font-size: 2.5em;
+        margin-bottom: 40px;
+    }
+    .testimonial-slider-container {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 20px;
+    }
+    .testimonial-item {
+        padding: 25px;
+    }
+    .client-avatar {
+        width: 70px;
+        height: 70px;
+        margin-right: 15px;
+    }
+    .author {
+        font-size: 1.1em;
+    }
+    .quote {
+        font-size: 1em;
+        line-height: 1.7;
+    }
+}
+
+/* --- Final Call to Action Section (Common) --- */
+.final-cta-section {
+    background-color: var(--color-background-white); /* Pure white background */
+}
+
+.final-cta-section .btn-lg {
+    margin-top: 40px;
+}
+
+/* --- Footer --- */
+.main-footer {
+    background-color: var(--color-text-heading); /* Footer background is rich brown */
+    color: var(--color-text-light); /* White text on dark footer */
+    padding: 70px 0 40px 0;
+    font-size: 0.95em;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.25); /* More visible border */
+}
+
+.footer-grid h3 {
+    color: var(--color-accent-light-gold); /* Footer headings are bright gold */
+    margin-bottom: 20px;
+    font-size: 1.4em;
+}
+
+.footer-grid ul {
+    list-style: none;
+}
+
+.footer-grid ul li {
+    margin-bottom: 12px;
+}
+
+.footer-grid ul li a {
+    color: rgba(255,255,255,0.9); /* Slightly transparent white links */
+    transition: color 0.3s ease;
+}
+
+.footer-grid ul li a:hover {
+    color: var(--color-accent-light-gold); /* Bright gold on hover */
+}
+
+.footer-contact p {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    color: rgba(255,255,255,0.9);
+}
+.footer-contact i {
+    margin-right: 12px;
+    color: var(--color-accent-light-gold); /* Icons are bright gold */
+    font-size: 1.25em;
+    flex-shrink: 0;
+}
+
+.footer-social a {
+    font-size: 2.1em;
+    color: var(--color-text-light); /* White social icons */
+    margin-right: 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--color-accent-light-gold); /* Bright gold on hover */
+    transform: translateY(-4px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9em;
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Small devices (phones, 767px and down) */
+@media (max-width: 767px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    /* Header */
+    .main-nav .nav-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--color-background-white);
+        position: absolute;
+        top: 90px;
+        left: 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        padding: 20px 0;
+        z-index: 999;
+    }
+    .main-nav .nav-list.active {
+        display: flex;
+    }
+    .main-nav .nav-list li {
+        text-align: center;
+        margin: 10px 0;
+    }
+    .main-nav .nav-list li a {
+        padding: 10px 0;
+        display: block;
+        font-size: 1.25em;
+    }
+    .main-nav .nav-list li a::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .hamburger-menu {
+        display: block;
+    }
+
+    /* Hero Section */
+    .hero-section {
+        height: 80vh;
+        padding: 80px 0;
+    }
+    .hero-content h1 {
+        font-size: 2.8em;
+    }
+    .hero-content p {
+        font-size: 1.2em;
+    }
+    .hero-ctas {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .btn-lg {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    /* Section titles & descriptions */
+    .section-title {
+        font-size: 1.9em; /* UPDATED: Reduced font size for mobile */
+        margin-bottom: 15px;
+    }
+    .section-description {
+        font-size: 1em;
+        margin-bottom: 40px;
+    }
+
+    /* Grids (all become single column) */
+    .services-grid,
+    .usp-grid,
+    .gallery-grid-preview,
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .service-item, .usp-item {
+        padding: 30px 20px;
+    }
+    .service-item i, .usp-item i {
+        font-size: 3.5em;
+    }
+    .service-item h3, .usp-item h3 {
+        font-size: 1.4em;
+    }
+
+    .testimonial-item .quote {
+        font-size: 1.3em;
+    }
+    .testimonial-item .author {
+        font-size: 1.1em;
+    }
+    .testimonial-slider {
+        padding: 30px 20px;
+    }
+
+    /* Footer */
+    .footer-grid {
+        text-align: center;
+    }
+    .footer-contact p {
+        justify-content: center;
+    }
+    .footer-contact i {
+        margin-right: 8px;
+    }
+    .footer-social {
+        display: flex;
+        justify-content: center;
+        margin-top: 15px;
+    }
+    .footer-social a {
+        margin: 0 10px;
+    }
+}
+
+/* Medium devices (tablets, 768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.8em;
+    }
+    .hero-content p {
+        font-size: 1.3em;
+    }
+
+    .services-grid,
+    .usp-grid,
+    .gallery-grid-preview {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .testimonial-item .quote {
+        font-size: 1.4em;
+    }
+}
+
+/* Large desktops (1025px and up) - No specific overrides unless needed */
+@media (min-width: 1025px) {
+    /* Adjustments for very large screens */
+    .hero-content h1 {
+        font-size: 4em; /* Even larger on very wide screens */
+    }
+}
+
+/* --- About Page Specific Styles --- */
+
+/* About Hero Section */
+.about-hero-section {
+    padding: 100px 0; /* Slightly more padding for about hero */
+}
+.about-hero-section .section-title {
+    font-size: 3.5em; /* Larger title for About hero */
+    margin-bottom: 20px;
+}
+.about-hero-section .section-description {
+    font-size: 1.3em;
+    max-width: 900px;
+    margin-bottom: 0;
+}
+
+/* Content Blocks (for Our Story, etc.) */
+.about-content-block {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+    align-items: center;
+    gap: 50px;
+}
+
+.about-image-wrapper {
+    flex: 1; /* Takes available space */
+    min-width: 300px; /* Minimum width before wrapping */
+    order: 2; /* Image on right by default */
+}
+
+.about-image {
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-medium);
+    transition: transform 0.3s ease;
+}
+
+.about-image:hover {
+    transform: translateY(-5px);
+}
+
+.about-text-content {
+    flex: 1.5; /* Takes more space for text */
+    min-width: 300px; /* Minimum width before wrapping */
+    order: 1; /* Text on left by default */
+}
+
+.about-text-content h2 {
+    margin-bottom: 25px;
+    font-size: 2.2em;
+}
+
+.about-text-content p {
+    margin-bottom: 18px;
+    font-size: 1.05em;
+    line-height: 1.7;
+    color: var(--color-text-dark-gold);
+}
+
+.about-text-content .btn {
+    margin-top: 20px;
+}
+
+/* Reverse order for alternating sections (optional) */
+.about-content-block.reverse-order .about-image-wrapper {
+    order: 1;
+}
+.about-content-block.reverse-order .about-text-content {
+    order: 2;
+}
+
+/* Values Grid Section */
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.value-item {
+    background-color: var(--color-background-white);
+    padding: 40px 30px;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border: 1px solid var(--color-border);
+}
+
+.value-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+    background-color: var(--color-primary-gold); /* Gold background on hover */
+}
+
+.value-item i {
+    font-size: 3.8em;
+    color: var(--color-primary-gold);
+    margin-bottom: 20px;
+    transition: color 0.3s ease;
+}
+
+.value-item:hover i {
+    color: var(--color-text-light); /* White icon on hover */
+}
+
+.value-item h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: var(--color-text-heading);
+    transition: color 0.3s ease;
+}
+
+.value-item:hover h3 {
+    color: var(--color-text-light); /* White heading on hover */
+}
+
+.value-item p {
+    font-size: 1em;
+    color: var(--color-text-dark-gold);
+    transition: color 0.3s ease;
+}
+
+.value-item:hover p {
+    color: rgba(255, 255, 255, 0.9); /* Slightly transparent white text on hover */
+}
+
+
+/* Responsive Adjustments for About Page */
+@media (max-width: 767px) {
+    .about-hero-section {
+        padding: 60px 0;
+    }
+    .about-hero-section .section-title {
+        font-size: 2.5em;
+    }
+    .about-hero-section .section-description {
+        font-size: 1.1em;
+    }
+
+    .about-content-block {
+        flex-direction: column; /* Stack image and text vertically */
+        text-align: center;
+    }
+    .about-image-wrapper, .about-text-content {
+        order: unset; /* Reset order for mobile */
+        min-width: unset;
+        flex: auto;
+    }
+    .about-text-content h2 {
+        font-size: 1.8em;
+    }
+
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .about-content-block {
+        gap: 30px;
+    }
+    .about-text-content h2 {
+        font-size: 2em;
+    }
+    .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- Services Page Specific Styles --- */
+
+/* Services Hero Section */
+.services-hero-section {
+    padding: 100px 0; /* Consistent padding with About hero */
+}
+.services-hero-section .section-title {
+    font-size: 3.5em; /* Consistent title size with About hero */
+    margin-bottom: 20px;
+}
+.services-hero-section .section-description {
+    font-size: 1.3em;
+    max-width: 900px;
+    margin-bottom: 0;
+}
+
+/* Our Core Services Section - Reuses .services-grid and .service-item from home page */
+
+/* Service Process Section */
+.service-process-section {
+    background-color: var(--color-background-light-grey); /* Subtle background */
+}
+
+.process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.process-step-item {
+    background-color: var(--color-background-white);
+    padding: 35px 25px;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-light);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid var(--color-border);
+    position: relative;
+    overflow: hidden; /* For pseudo-element effects */
+}
+
+/* Optional: Add a subtle overlay on hover */
+.process-step-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(218, 165, 32, 0.05) 0%, rgba(184, 134, 11, 0.05) 100%); /* Light gold tint */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.process-step-item:hover::before {
+    opacity: 1;
+}
+
+.process-step-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.process-step-item .step-icon {
+    font-size: 3.5em;
+    color: var(--color-primary-gold);
+    margin-bottom: 20px;
+    line-height: 1; /* Remove extra space below icon */
+    position: relative; /* Ensure icon is above pseudo-element */
+    z-index: 1;
+}
+
+.process-step-item h3 {
+    font-size: 1.6em;
+    margin-bottom: 15px;
+    color: var(--color-text-heading);
+    position: relative;
+    z-index: 1;
+}
+
+.process-step-item p {
+    font-size: 1em;
+    color: var(--color-text-dark-gold);
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Responsive Adjustments for Services Page */
+@media (max-width: 767px) {
+    .services-hero-section {
+        padding: 60px 0;
+    }
+    .services-hero-section .section-title {
+        font-size: 2.5em;
+    }
+    .services-hero-section .section-description {
+        font-size: 1.1em;
+    }
+
+    .process-steps-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .process-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- Gallery Page Specific Styles --- */
+
+/* Gallery Hero Section */
+.gallery-hero-section {
+    padding: 100px 0;
+}
+.gallery-hero-section .section-title {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+.gallery-hero-section .section-description {
+    font-size: 1.3em;
+    max-width: 900px;
+    margin-bottom: 0;
+}
+
+/* Main Gallery Grid - Instagram Explore Look with fixed aspect ratios to prevent overlap */
+.gallery-grid {
+    display: grid;
+    /* Define a flexible column layout: 3 columns, each min 280px */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* grid-auto-rows is removed. Item heights will be dictated by aspect-ratio based on width. */
+    gap: 15px; /* Space between gallery items */
+    margin-top: 60px;
+    grid-auto-flow: dense; /* Tries to fill holes earlier in the grid */
+}
+
+.gallery-item {
+    background-color: var(--color-background-white);
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-light);
+    overflow: hidden; /* Ensures image corners are rounded and content stays within */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    /* Default: all gallery items are square. Their height will be determined by their width. */
+    aspect-ratio: 1 / 1;
+}
+
+.gallery-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-medium);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%; /* Image fills the entire item div */
+    object-fit: cover; /* Ensures images cover the area without distortion, cropping if necessary */
+    display: block; /* Removes extra space below image */
+    transition: transform 0.5s ease;
+    border-radius: var(--border-radius-soft);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+}
+
+/* Specific classes for Instagram-like spanning - Crucial for defining non-overlapping shapes */
+.gallery-item-wide {
+    grid-column: span 2; /* Spans 2 columns */
+    aspect-ratio: 2 / 1; /* This makes the item twice as wide as it is tall */
+}
+
+.gallery-item-tall {
+    grid-row: span 2; /* Spans 2 rows */
+    aspect-ratio: 1 / 2; /* This makes the item twice as tall as it is wide */
+}
+
+/* For items that are both wide and tall (e.g., 2x2 block) */
+.gallery-item-large {
+    grid-column: span 2;
+    grid-row: span 2;
+    aspect-ratio: 1 / 1; /* A 2x2 block maintaining a square aspect ratio */
+}
+
+
+/* --- Pagination Styles for Gallery --- */
+.pagination-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    gap: 20px;
+}
+
+.btn-pagination {
+    padding: 12px 25px;
+    font-size: 1.1em;
+    min-width: 120px; /* Ensure consistent button width */
+}
+
+.btn-pagination:disabled {
+    background-color: var(--color-background-light-grey);
+    color: var(--color-text-dark-gold);
+    border-color: var(--color-border);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.page-info {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--color-text-heading);
+}
+
+/* Responsive Adjustments for Gallery Page */
+@media (max-width: 767px) {
+    .gallery-hero-section {
+        padding: 60px 0;
+    }
+    .gallery-hero-section .section-title {
+        font-size: 2.5em;
+    }
+    .gallery-hero-section .section-description {
+        font-size: 1.1em;
+    }
+
+    .gallery-grid {
+        /* On small screens, switch to 2 columns for a more mobile-friendly Instagram look */
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjust min width for 2 columns */
+        /* grid-auto-rows is removed here as well, relying on aspect-ratio */
+        gap: 10px;
+    }
+
+    /* Adjust spanning for mobile to prevent excessively large blocks - force square */
+    .gallery-item-wide, .gallery-item-tall, .gallery-item-large {
+        grid-column: span 1; /* All items become 1 column wide */
+        grid-row: span 1; /* All items become 1 row tall */
+        aspect-ratio: 1 / 1; /* Force square on mobile */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust for tablet sizes, maybe 3 columns */
+        /* grid-auto-rows is removed here as well */
+        gap: 20px;
+    }
+     /* Spanning rules for tablets will be same as desktop if not overridden here */
+    .gallery-item-wide {
+        grid-column: span 2;
+        aspect-ratio: 2 / 1;
+    }
+    .gallery-item-tall {
+        grid-row: span 2;
+        aspect-ratio: 1 / 2;
+    }
+    .gallery-item-large {
+        grid-column: span 2;
+        grid-row: span 2;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+
+/* --- Contact Page Specific Styles --- */
+
+/* Contact Hero Section */
+.contact-hero-section {
+    padding: 100px 0;
+}
+.contact-hero-section .section-title {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+}
+.contact-hero-section .section-description {
+    font-size: 1.3em;
+    max-width: 900px;
+    margin-bottom: 0;
+}
+
+/* Contact Content Grid (Info and Form) */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Info takes 1 part, Form takes 2 parts */
+    gap: 60px; /* Space between the two columns */
+    align-items: flex-start; /* Align content to the top */
+}
+
+.contact-info {
+    background-color: var(--color-background-light-grey);
+    padding: 40px;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-light);
+}
+
+.contact-info .sub-heading {
+    font-size: 2.2em;
+    color: var(--color-primary);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.contact-info p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: var(--color-text-body);
+}
+
+.contact-info .info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.contact-info .info-item .icon-primary {
+    font-size: 1.8em;
+    color: var(--color-primary);
+    margin-right: 20px;
+    min-width: 30px; /* Ensure icon has space */
+}
+
+.contact-info .info-item p {
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.contact-info .info-item a {
+    color: var(--color-text-body);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+.contact-info .info-item a:hover {
+    color: var(--color-primary);
+}
+
+.social-contact-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-contact-links a {
+    font-size: 1.8em;
+    color: var(--color-text-body);
+    transition: color 0.3s ease;
+}
+
+.social-contact-links a:hover {
+    color: var(--color-primary);
+}
+
+/* Contact Form */
+.contact-form {
+    background-color: var(--color-background-white);
+    padding: 40px;
+    border-radius: var(--border-radius-soft);
+    box-shadow: var(--shadow-light);
+}
+
+.contact-form .sub-heading {
+    font-size: 2.2em;
+    color: var(--color-primary);
+    margin-bottom: 25px;
+    line-height: 1.2;
+}
+
+.main-contact-form .form-group {
+    margin-bottom: 25px;
+}
+
+.main-contact-form label {
+    display: block;
+    font-size: 1.1em;
+    color: var(--color-text-heading);
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.main-contact-form input[type="text"],
+.main-contact-form input[type="email"],
+.main-contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius-soft);
+    font-size: 1em;
+    color: var(--color-text-body);
+    background-color: var(--color-background-white);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-contact-form input::placeholder,
+.main-contact-form textarea::placeholder {
+    color: var(--color-text-body);
+    opacity: 0.7;
+}
+
+.main-contact-form input:focus,
+.main-contact-form textarea:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.2);
+    outline: none;
+}
+
+.main-contact-form textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 120px;
+}
+
+.main-contact-form .btn-primary {
+    width: auto; /* Button fits content */
+    padding: 15px 30px;
+    font-size: 1.2em;
+    margin-top: 15px;
+}
+
+/* Map Section */
+.map-section .section-title {
+    margin-bottom: 40px;
+}
+
+.map-container {
+    width: 100%;
+    height: 450px; /* Fixed height for the map */
+    border-radius: var(--border-radius-soft);
+    overflow: hidden; /* Ensures the iframe respects border-radius */
+    box-shadow: var(--shadow-light);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+
+/* Responsive Adjustments for Contact Page */
+@media (max-width: 991px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        gap: 40px;
+    }
+}
+
+@media (max-width: 767px) {
+    .contact-hero-section {
+        padding: 60px 0;
+    }
+    .contact-hero-section .section-title {
+        font-size: 2.5em;
+    }
+    .contact-hero-section .section-description {
+        font-size: 1.1em;
+    }
+
+    .contact-info, .contact-form {
+        padding: 30px;
+    }
+
+    .contact-info .sub-heading,
+    .contact-form .sub-heading {
+        font-size: 1.8em;
+    }
+
+    .contact-info .info-item .icon-primary {
+        font-size: 1.5em;
+        margin-right: 15px;
+    }
+
+    .map-container {
+        height: 300px; /* Adjust map height on mobile */
+    }
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Gallery - Your Event Company Name</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./imgs/udeventlogo.jpg" alt="UD Event Logo">                </a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list" id="navList">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="./services.html">Services</a></li>
+                    <li><a href="./gallery.html" class="active">Gallery</a></li>
+                    <li><a href="./connect.html">Contact</a></li>
+                </ul>
+                <div class="hamburger-menu" id="hamburgerMenu">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="gallery-hero-section bg-light section-padding text-center">
+            <div class="container">
+                <h1 class="section-title">A Glimpse Into Our Event Creations</h1>
+                <p class="section-description">
+                    Explore our portfolio of past events, showcasing the creativity, detail, and unforgettable moments we've crafted.
+                </p>
+            </div>
+        </section>
+
+        <section class="main-gallery-section section-padding bg-white">
+            <div class="container">
+                <h2 class="section-title text-heading">Our Featured Events</h2>
+                <p class="section-description">
+                    From corporate elegance to joyous celebrations, witness the diversity and quality of our event planning.
+                </p>
+
+                <div class="gallery-grid" id="galleryGrid">
+                    </div>
+
+                <div class="pagination-controls">
+                    <button id="prevPageBtn" class="btn btn-primary btn-pagination">Previous</button>
+                    <span id="pageInfo" class="page-info">Page 1 of X</span>
+                    <button id="nextPageBtn" class="btn btn-primary btn-pagination">Next</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-cta-section section-padding bg-light">
+            <div class="container text-center">
+                <h2 class="section-title text-heading">Ready to Create Your Own Unforgettable Event?</h2>
+                <p class="section-description">
+                    Inspired by our work? Contact us today to discuss how we can bring your unique event vision to life.
+                </p>
+                <a href="#" class="btn btn-primary btn-lg">Plan Your Event Now</a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-about">
+                <h3>About Us</h3>
+                <p>We are a dedicated team committed to delivering exceptional solutions and building lasting relationships. Your success is our priority.</p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About Us</a></li>
+                    <li><a href="./services.html">Services</a></li>
+                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="./connect.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-services">
+                <h3>Our Event Expertise</h3>
+                <ul>
+                    <li><a href="#">Corporate Events</a></li>
+                    <li><a href="#">Weddings</a></li>
+                    <li><a href="#">Social Gatherings</a></li>
+                    <li><a href="#">Virtual Events</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt"></i> [Your Address], [City], [State], [Zip]</p>
+                <p><i class="fas fa-phone-alt"></i> [Your Phone Number]</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@youreventcompany.com">info@youreventcompany.com</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Your Event Company Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
